@@ -1,0 +1,30 @@
+name: Checkout Experiment
+
+on:
+  push:
+    branches:
+      - learning-ci
+
+  workflow_dispatch:
+
+jobs:
+  checkout-test:
+    name: Test Repository Checkout
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Download the repository source code
+      - name: Checkout source code
+        uses: actions/checkout@v4
+
+      # Step 2: Display the working directory
+      - name: Display current directory
+        run: pwd
+
+      # Step 3: Display repository contents
+      - name: List repository files
+        run: ls -la
+
+      # Step 4: Display the current Git commit
+      - name: Display current commit
+        run: git log -1 --oneline
